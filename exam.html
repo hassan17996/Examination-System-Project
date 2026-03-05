@@ -112,7 +112,6 @@
             gap: 10px;
         }
 
-
         .choice-item {
             display: flex;
             align-items: center;
@@ -278,11 +277,10 @@
         }
 
         .q-dot.current {
-            background-color: #fdecea;
-            color: #e74c3c;
+            background-color: #bed6f1;
         }
 
-        .q-dot.marked-dot {
+        .q-dot.marked{
             background-color: #f39c12;
             color: #fff;
         }
@@ -303,7 +301,6 @@
         .btn-submit:hover {
             background-color: #0f582e;
         }
-
 
         @media (max-width: 768px) {
             .exam-main {
@@ -345,7 +342,7 @@
                     <div class="timer-bar-inner" id="timerBar"></div>
                 </div>
 
-                <div class="timer-display" id="timerDisplay">10:00</div>
+                <div class="timer-display" id="timerDisplay" data-minutes="5"></div>
             </div>
         </header>
         <hr>
@@ -354,35 +351,35 @@
 
             <div class="question-panel">
                 <div class="q-number-badge">
-                    Question <span class="num" id="currentQNum">1</span> of <span id="totalQNum">10</span>
+                    Question <span class="num" id="currentQNum">1</span> of <span id="totalQestionsNum"></span>
                 </div>
 
-                <div class="question-text" id="questionText">She ____ to the store before the rain started.</div>
+                <div class="question-text" id="questionText"></div>
 
                 <div class="choices-list" id="choicesList">
                     <div class="choice-item">
                         <div class="choice-radio"></div>
-                        <span class="choice-label">goes</span>
+                        <span class="choice-label"></span>
                     </div>
                     <div class="choice-item">
                         <div class="choice-radio"></div>
-                        <span class="choice-label">had gone</span>
+                        <span class="choice-label"></span>
                     </div>
                     <div class="choice-item">
                         <div class="choice-radio"></div>
-                        <span class="choice-label">has gone</span>
+                        <span class="choice-label"></span>
                     </div>
                     <div class="choice-item">
                         <div class="choice-radio"></div>
-                        <span class="choice-label">gone</span>
+                        <span class="choice-label"></span>
                     </div>
                 </div>
 
                 <div class="nav-controls">
                     <button class="btn-nav btn-progress" id="btnProgress">Question <span
-                            id="progressCount">1</span></button>
-                    <button class="btn-nav btn-prev" id="btnPrev" onclick="navigate(-1)">← Previous</button>
-                    <button class="btn-nav btn-next" id="btnNext" onclick="navigate(1)">Next →</button>
+                            id="progressCount"></span></button>
+                    <button class="btn-nav btn-prev" id="btnPrev">← Previous</button>
+                    <button class="btn-nav btn-next" id="btnNext">Next →</button>
                     <button class="btn-nav btn-mark" id="btnMark" onclick="toggleMark()">⚑ Mark</button>
                 </div>
             </div>
@@ -391,24 +388,12 @@
 
                 <div>
                     <div class="sidebar-title">Questions</div>
-
-                    <div class="q-grid" id="qGrid">
-                        <div class="q-dot answered">1</div>
-                        <div class="q-dot current">2</div>
-                        <div class="q-dot">3</div>
-                        <div class="q-dot">4</div>
-                        <div class="q-dot">5</div>
-                        <div class="q-dot">6</div>
-                        <div class="q-dot">7</div>
-                        <div class="q-dot">8</div>
-                        <div class="q-dot">9</div>
-                        <div class="q-dot">10</div>
-                    </div>
+                    <div class="q-grid" id="qGrid"></div>
                 </div>
 
                 <div>
                     <div class="sidebar-title">Marked</div>
-                    <div class="mark-list" id="markList"><span class="empty-mark">No marked questions</span></div>
+                    <div class="mark-list" id="markList"></span></div>
                 </div>
 
                 <button class="btn-submit" onclick="submitExam()">Submit Exam</button>
