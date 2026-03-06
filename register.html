@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+         body {
+      background-color: #212529;
+    }
+
+      .card-registration {
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      .card-registration .card-body {
+        padding: 2.5rem;
+      }
+
+      .card-registration img {
+        height: 100%;
+        object-fit: cover;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      .card-registration h3 {
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+      }
+
+      .card-registration .select-arrow {
+        top: 13px;
+      }
+
+      /* make invalid feedback show */
+      .form-control.is-invalid ~ .invalid-feedback,
+      .form-select.is-invalid ~ .invalid-feedback {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="min-vh-100 d-flex align-items-center py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <div class="card card-registration shadow-lg">
+              <div class="row g-0">
+                <!-- Left image -->
+                <div class="col-xl-6 d-none d-xl-block">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                    alt="Registration"
+                    class="img-fluid w-100 h-100"
+                    style="
+                      object-fit: cover;
+                      border-top-left-radius: 0.5rem;
+                      border-bottom-left-radius: 0.5rem;
+                    "
+                  />
+                </div>
+
+                <!-- Right form -->
+                <div class="col-xl-6">
+                  <div class="card-body p-4 p-md-5 text-black">
+                    <h3 class="mb-4 text-uppercase">
+                      Student Registration Form
+                    </h3>
+
+                    <form id="regForm" novalidate>
+                      <!-- First & Last Name -->
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <label class="form-label" for="firstName"
+                            >First name</label
+                          >
+                          <input
+                            type="text"
+                            id="firstName"
+                            class="form-control form-control-lg"
+                            placeholder="First name"
+                          />
+                          <div class="invalid-feedback">
+                            Letters only, required.
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <label class="form-label" for="lastName"
+                            >Last name</label
+                          >
+                          <input
+                            type="text"
+                            id="lastName"
+                            class="form-control form-control-lg"
+                            placeholder="Last name"
+                          />
+                          <div class="invalid-feedback">
+                            Letters only, required.
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Email -->
+                      <div class="mb-4">
+                        <label class="form-label" for="email"
+                          >Email Address</label
+                        >
+                        <input
+                          type="email"
+                          id="email"
+                          class="form-control form-control-lg"
+                          placeholder="example@gmail.com"
+                        />
+                        <div class="invalid-feedback">
+                          Enter a valid email address.
+                        </div>
+                      </div>
+
+                      <!-- Password -->
+                      <div class="mb-4">
+                        <label class="form-label" for="password"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control form-control-lg"
+                          placeholder="Min. 8 characters"
+                        />
+                        <div class="invalid-feedback">
+                          At least 8 characters required.
+                        </div>
+                      </div>
+
+                      <!-- Re-enter Password -->
+                      <div class="mb-4">
+                        <label class="form-label" for="rePassword"
+                          >Re-enter Password</label
+                        >
+                        <input
+                          type="password"
+                          id="rePassword"
+                          class="form-control form-control-lg"
+                          placeholder="Repeat your password"
+                        />
+                        <div class="invalid-feedback">
+                          Passwords do not match.
+                        </div>
+                      </div>
+
+                      <!-- Success alert -->
+                      <div class="alert alert-success d-none" id="successMsg">
+                        ✅ Account created successfully!
+                      </div>
+
+                      <!-- Buttons -->
+                      <div class="d-flex justify-content-end pt-2">
+                        <button type="reset" class="btn btn-light btn-lg">
+                          Reset all
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn btn-primary btn-lg ms-2"
+                        >
+                          Submit form
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- /Right form -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="register.js"></script>
+  </body>
+</html>
