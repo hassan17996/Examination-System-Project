@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Page</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        header.exam-header {
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background-color: #102647;
+            color: #4a9eff;
+            padding: 12px 24px;
+        }
+
+        div.exam-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .timer-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .timer-bar-outer {
+            width: 150px;
+            height: 7px;
+            background-color: #3b4243;
+            border-radius: 4px;
+        }
+
+        .timer-bar-inner {
+            height: 100%;
+            background-color: #4a9eff;
+            border-radius: 4px;
+        }
+
+        .timer-bar-inner.danger {
+            background-color: #e74c3c;
+        }
+
+        .timer-display {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #4a9eff;
+            min-width: 50px;
+        }
+
+        .timer-display.danger {
+            color: #e74c3c;
+            animation: pulse 1s infinite;
+        }
+
+        hr {
+            color: #c27b05;
+            margin: 0;
+        }
+
+        .exam-main {
+            display: flex;
+            background-color: #0d1f3c;
+            margin: 80px 20px 0;
+        }
+
+        .question-panel {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 30px;
+        }
+
+        .q-number-badge,
+        .sidebar-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .q-number-badge .num {
+            display: inline-block;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 28px;
+            color: #bfbec1;
+        }
+
+        .choices-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .choice-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            background-color: #fff;
+            border: 2px solid #4a9eff;
+            border-radius: 0px;
+            border-left: 5px solid #4a9eff;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .choice-item:hover {
+            background-color: #4a9eff;
+        }
+
+        .choice-radio {
+            width: 15px;
+            height: 15px;
+            border: 2px solid #aeacac;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .choice-item.selected .choice-radio {
+            background-color: #f39c12;
+            border: none;
+        }
+
+        .choice-item.selected .choice-label {
+            color: #f39c12;
+        }
+
+        .choice-label {
+            font-size: 1rem;
+            color: #0c4586;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .btn-nav {
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-progress {
+            background-color: #f8f7ec;
+            color: #f39c12;
+        }
+
+        .btn-progress:hover {
+            background-color: #f39c12;
+            border: #f39c12;
+            color: #fff;
+        }
+
+        .btn-prev,
+        .btn-next,
+        .btn-mark {
+            background-color: #f39c12;
+            color: #fff;
+            border-color: #f39c12;
+            transition: background-color 0.3s ease-in, border-color 0.3s ease-in;
+        }
+
+        .btn-prev:hover,
+        .btn-next:hover,
+        .btn-mark:hover {
+            background-color: #0c4586;
+            border-color: #0c4586;
+        }
+
+        .btn-mark {
+            margin-left: auto;
+        }
+
+        .btn-mark.marked {
+            background-color: #fff;
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .sidebar {
+            width: 20%;
+            min-width: 180px;
+            background-color: #102647;
+            padding: 20px 16px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mark-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .mark-item {
+            padding: 6px 10px;
+            background-color: #fef9e7;
+            border: 1px solid #f39c12;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #c27b05;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .mark-item:hover {
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        .empty-mark {
+            font-size: 1rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .sidebar-title {
+            margin-bottom: 6px;
+        }
+
+        .q-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .q-dot {
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #555;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .q-dot:hover {
+            background-color: #abdef4;
+        }
+
+        .q-dot.answered {
+            background-color: #d5f5e3;
+            color: #27ae60;
+        }
+
+        .q-dot.current {
+            background-color: #bed6f1;
+        }
+
+        .q-dot.marked{
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        .btn-submit {
+            background-color: #18723e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 11px 40px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-submit:hover {
+            background-color: #0f582e;
+        }
+
+        @media (max-width: 768px) {
+            .exam-main {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 16px;
+            }
+
+            .question-panel {
+                padding: 20px;
+            }
+
+            .btn-submit {
+                margin-top: 10px;
+            }
+
+            .timer-bar-outer {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="examPage">
+
+        <header class="exam-header">
+
+            <div class="exam-logo">Examination <span style="color: #f39c12;">Page</span></div>
+
+            <div class="timer-wrap">
+
+                <div class="timer-bar-outer">
+                    <div class="timer-bar-inner" id="timerBar"></div>
+                </div>
+
+                <div class="timer-display" id="timerDisplay" data-minutes="5"></div>
+            </div>
+        </header>
+        <hr>
+
+        <div class="exam-main">
+
+            <div class="question-panel">
+                <div class="q-number-badge">
+                    Question <span class="num" id="currentQNum">1</span> of <span id="totalQestionsNum"></span>
+                </div>
+
+                <div class="question-text" id="questionText"></div>
+
+                <div class="choices-list" id="choicesList">
+                    <div class="choice-item">
+                        <div class="choice-radio"></div>
+                        <span class="choice-label"></span>
+                    </div>
+                    <div class="choice-item">
+                        <div class="choice-radio"></div>
+                        <span class="choice-label"></span>
+                    </div>
+                    <div class="choice-item">
+                        <div class="choice-radio"></div>
+                        <span class="choice-label"></span>
+                    </div>
+                    <div class="choice-item">
+                        <div class="choice-radio"></div>
+                        <span class="choice-label"></span>
+                    </div>
+                </div>
+
+                <div class="nav-controls">
+                    <button class="btn-nav btn-progress" id="btnProgress">Question <span
+                            id="progressCount"></span></button>
+                    <button class="btn-nav btn-prev" id="btnPrev">← Previous</button>
+                    <button class="btn-nav btn-next" id="btnNext">Next →</button>
+                    <button class="btn-nav btn-mark" id="btnMark" onclick="toggleMark()">⚑ Mark</button>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+
+                <div>
+                    <div class="sidebar-title">Questions</div>
+                    <div class="q-grid" id="qGrid"></div>
+                </div>
+
+                <div>
+                    <div class="sidebar-title">Marked</div>
+                    <div class="mark-list" id="markList"></span></div>
+                </div>
+
+                <button class="btn-submit" onclick="submitExam()">Submit Exam</button>
+            </aside>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="exam.js"></script>
+</body>
+
+</html>
