@@ -30,12 +30,14 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
   if (saved && em.value.trim() === saved.email && pw.value === saved.password) {
     successMsg.classList.remove("d-none");
-    setTimeout(() => {
-      alert(
-        "Welcome " +
-          saved.firstName +" " +saved.lastName +" Redirecting to exam",
-      );
-    }, 1500);
+setTimeout(() => {
+  alert(
+    "Welcome " +
+      saved.firstName + " " + saved.lastName + " Redirecting to exam"
+  );
+
+  window.location.href = "exam.html"; 
+}, 1500);
   } else {
     errorMsg.classList.remove("d-none");
     em.classList.replace("is-valid", "is-invalid");
