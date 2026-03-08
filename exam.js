@@ -275,6 +275,17 @@ SUBMIT
 ══════════════════════════════════════════════ */
 function submitExam() {
     clearInterval(timer);
-}
 
+    let correct = 0;
+    for (let i = 0; i < shuffledQuestions.length; i++) {
+        if (userAnswers[i] === shuffledQuestions[i].getCorrectIndex()) {
+            correct++;
+        }
+    }
+
+    localStorage.setItem("correctAnswers", correct);
+    localStorage.setItem("totalQuestions", shuffledQuestions.length);
+
+    window.location.href = "grades.html";
+}
 showQuestion();
