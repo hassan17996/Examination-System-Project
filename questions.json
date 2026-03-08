@@ -1,0 +1,92 @@
+[
+    {
+        "question": "What is the output of: console.log(typeof null);",
+        "answers": [
+            { "text": "null", "isCorrect": false },
+            { "text": "object", "isCorrect": true },
+            { "text": "undefined", "isCorrect": false },
+            { "text": "string", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which data structure uses LIFO (Last In, First Out)?",
+        "answers": [
+            { "text": "Queue", "isCorrect": false },
+            { "text": "Stack", "isCorrect": true },
+            { "text": "Tree", "isCorrect": false },
+            { "text": "Graph", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What does HTML stand for?",
+        "answers": [
+            { "text": "Hyper Text Markup Language", "isCorrect": true },
+            { "text": "High Text Machine Language", "isCorrect": false },
+            { "text": "Hyperlinks and Text Markup Lang", "isCorrect": false },
+            { "text": "Home Tool Markup Language", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of these is NOT a JavaScript data type?",
+        "answers": [
+            { "text": "undefined", "isCorrect": false },
+            { "text": "boolean", "isCorrect": false },
+            { "text": "float", "isCorrect": true },
+            { "text": "symbol", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which keyword is used to declare a constant in JavaScript?",
+        "answers": [
+            { "text": "var", "isCorrect": false },
+            { "text": "let", "isCorrect": false },
+            { "text": "const", "isCorrect": true },
+            { "text": "def", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which CSS property controls the space between elements?",
+        "answers": [
+            { "text": "padding", "isCorrect": false },
+            { "text": "spacing", "isCorrect": false },
+            { "text": "margin", "isCorrect": true },
+            { "text": "border", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which keyword is block-scoped?",
+        "answers": [
+            { "text": "var", "isCorrect": false },
+            { "text": "let", "isCorrect": true },
+            { "text": "const", "isCorrect": true },
+            { "text": "def", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What will 0.1 + 0.2 === 0.3 return?",
+        "answers": [
+            { "text": "true", "isCorrect": false },
+            { "text": "false", "isCorrect": true },
+            { "text": "undefined", "isCorrect": false },
+            { "text": "NaN", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which array method returns a new array?",
+        "answers": [
+            { "text": "forEach()", "isCorrect": false },
+            { "text": "map()", "isCorrect": true },
+            { "text": "filter()", "isCorrect": true },
+            { "text": "reduce()", "isCorrect": true }
+        ]
+    },
+    {
+        "question": "What does setTimeout() do?",
+        "answers": [
+            { "text": "Executes a function after a specified delay", "isCorrect": true },
+            { "text": "Executes a function immediately", "isCorrect": false },
+            { "text": "Executes a function repeatedly at specified intervals", "isCorrect": false },
+            { "text": "Executes a function when an event occurs", "isCorrect": false }
+        ]
+    }
+]
