@@ -1,3 +1,8 @@
+history.pushState(null, "", location.href);
+window.addEventListener("popstate", function () {
+    history.pushState(null, "", location.href);
+});
+
 const firstName = localStorage.getItem("firstName") || "Student";
 const lastName = localStorage.getItem("lastName") || "";
 const correct = parseInt(localStorage.getItem("correctAnswers")) || 0;

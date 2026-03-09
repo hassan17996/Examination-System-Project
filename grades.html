@@ -1,64 +1,105 @@
-<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grades Page</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    class="bg-light d-flex align-items-center justify-content-center min-vh-100"
-  >
-    <div
-      class="card shadow text-center p-4"
-      style="max-width: 500px; width: 100%"
-    >
-      <h2 class="mb-1">Exam Results</h2>
-      <p class="text-muted mb-3" id="student-msg"></p>
 
-      <!-- Score -->
-      <h1 class="display-4 fw-bold text-primary mb-0" id="score"></h1>
-      <p class="text-muted mb-3" id="percent"></p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grades Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0d1f3c 0%, #102647 100%);
+      min-height: 100vh;
+    }
 
-      <!-- Progress Bar -->
-      <div class="progress mb-4" style="height: 14px">
-        <div
-          class="progress-bar bg-primary"
-          id="score-bar"
-          style="width: 0%; transition: width 1s"
-          role="progressbar"
-        ></div>
-      </div>
+    .result-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
 
-      <!-- Stats -->
-      <div class="row g-2 mb-4">
-        <div class="col-4">
-          <div class="border rounded p-2">
-            <div class="fw-bold text-success fs-5" id="stat-correct"></div>
-            <small class="text-muted">Correct</small>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="border rounded p-2">
-            <div class="fw-bold text-danger fs-5" id="stat-wrong"></div>
-            <small class="text-muted">Wrong</small>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="border rounded p-2">
-            <div class="fw-bold text-primary fs-5" id="stat-total"></div>
-            <small class="text-muted">Total</small>
-          </div>
-        </div>
-      </div>
+    .result-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0d1f3c;
+    }
 
-      <!-- Remark -->
-      <div class="alert" id="remark-alert"></div>
+    .score-display {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #4a9eff;
+    }
+
+    .stat-box {
+      border-radius: 10px;
+      padding: 14px 10px;
+      background: #f8f9fa;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .progress {
+      height: 14px;
+      border-radius: 8px;
+      background: #e9ecef;
+    }
+
+    .progress-bar {
+      border-radius: 8px;
+      transition: width 1.2s ease;
+    }
+  </style>
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+
+  <div class="result-card text-center">
+
+    <div class="mb-2">
+      <span style="font-size:3rem;">🎓</span>
     </div>
 
-    <script src="grades.js"></script>
-  </body>
+    <h2 class="result-title mb-1">Exam Results</h2>
+    <p class="text-muted mb-4" id="student-msg"></p>
+
+    <div class="score-display mb-0" id="score"></div>
+    <p class="text-muted mb-3" id="percent"></p>
+
+    <div class="progress mb-4">
+      <div class="progress-bar bg-primary" id="score-bar" style="width: 0%" role="progressbar"></div>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-4">
+        <div class="stat-box">
+          <div class="stat-value text-success" id="stat-correct"></div>
+          <small class="text-muted">Correct</small>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="stat-box">
+          <div class="stat-value text-danger" id="stat-wrong"></div>
+          <small class="text-muted">Wrong</small>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="stat-box">
+          <div class="stat-value text-primary" id="stat-total"></div>
+          <small class="text-muted">Total</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert mb-4" id="remark-alert"></div>
+
+  </div>
+
+  <script src="grades.js"></script>
+</body>
+
 </html>
