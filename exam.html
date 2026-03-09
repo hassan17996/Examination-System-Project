@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -280,7 +279,7 @@
             background-color: #bed6f1;
         }
 
-        .q-dot.marked{
+        .q-dot.marked {
             background-color: #f39c12;
             color: #fff;
         }
@@ -333,29 +332,23 @@
     <div id="examPage">
 
         <header class="exam-header">
-
             <div class="exam-logo">Examination <span style="color: #f39c12;">Page</span></div>
-
             <div class="timer-wrap">
-
                 <div class="timer-bar-outer">
                     <div class="timer-bar-inner" id="timerBar"></div>
                 </div>
-
-                <div class="timer-display" id="timerDisplay" data-minutes="5"></div>
+                <div class="timer-display" id="timerDisplay" data-minutes="1"></div>
             </div>
         </header>
         <hr>
 
         <div class="exam-main">
-
             <div class="question-panel">
                 <div class="q-number-badge">
                     Question <span class="num" id="currentQNum">1</span> of <span id="totalQestionsNum"></span>
                 </div>
 
                 <div class="question-text" id="questionText"></div>
-
                 <div class="choices-list" id="choicesList">
                     <div class="choice-item">
                         <div class="choice-radio"></div>
@@ -380,30 +373,25 @@
                             id="progressCount"></span></button>
                     <button class="btn-nav btn-prev" id="btnPrev">← Previous</button>
                     <button class="btn-nav btn-next" id="btnNext">Next →</button>
-                    <button class="btn-nav btn-mark" id="btnMark" onclick="toggleMark()">⚑ Mark</button>
+                    <button class="btn-nav btn-mark" id="btnMark">⚑ Mark</button>
                 </div>
             </div>
 
             <aside class="sidebar">
-
                 <div>
                     <div class="sidebar-title">Questions</div>
                     <div class="q-grid" id="qGrid"></div>
                 </div>
-
                 <div>
                     <div class="sidebar-title">Marked</div>
                     <div class="mark-list" id="markList"></span></div>
                 </div>
-
-                <button class="btn-submit" onclick="submitExam()">Submit Exam</button>
+                <button class="btn-submit" id="btnSubmit">Submit Exam</button>
             </aside>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="exam.js"></script>
 </body>
-
 </html>
