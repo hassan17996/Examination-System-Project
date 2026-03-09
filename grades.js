@@ -11,7 +11,7 @@ const wrong = total - correct;
 const percent = total > 0 ? Math.round((correct / total) * 100) : 0;
 
 document.getElementById("student-msg").innerHTML =
-  `Congratulations, <strong>${firstName} ${lastName}</strong>!`;
+  `Hello <strong>${firstName} ${lastName}</strong>!`;
 
 document.getElementById("score").textContent = `${correct} / ${total}`;
 document.getElementById("percent").textContent = `${percent}%`;
