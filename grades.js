@@ -1,17 +1,27 @@
+if (!localStorage.getItem("firstName")) {
+  window.location.replace("login.html");
+}
+
 history.pushState(null, "", location.href);
+history.replaceState(null, "", location.href);
+
 window.addEventListener("popstate", function () {
-    history.pushState(null, "", location.href);
+  localStorage.clear();
+  sessionStorage.clear();
+
+  window.location.replace("home.html");
 });
 
 const firstName = localStorage.getItem("firstName") || "Student";
 const lastName = localStorage.getItem("lastName") || "";
 const correct = parseInt(localStorage.getItem("correctAnswers")) || 0;
 const total = parseInt(localStorage.getItem("totalQuestions")) || 0;
+
 const wrong = total - correct;
 const percent = total > 0 ? Math.round((correct / total) * 100) : 0;
 
 document.getElementById("student-msg").innerHTML =
-  `Hello <strong>${firstName} ${lastName}</strong>!`;
+`Hello <strong>${firstName} ${lastName}</strong>!`;
 
 document.getElementById("score").textContent = `${correct} / ${total}`;
 document.getElementById("percent").textContent = `${percent}%`;
@@ -24,13 +34,16 @@ setTimeout(() => {
 }, 100);
 
 const alertEl = document.getElementById("remark-alert");
+
 if (percent >= 80) {
   alertEl.className = "alert alert-success";
-  alertEl.textContent = " Excellent! Great work!";
-} else if (percent >= 50) {
+  alertEl.textContent = "Excellent! Great work!";
+} 
+else if (percent >= 50) {
   alertEl.className = "alert alert-warning";
-  alertEl.textContent = " Good effort, keep it up!";
-} else {
+  alertEl.textContent = "Good effort, keep it up!";
+} 
+else {
   alertEl.className = "alert alert-danger";
-  alertEl.textContent = " Keep studying, you can do better!";
+  alertEl.textContent = "Keep studying, you can do better!";
 }
